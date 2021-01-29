@@ -8,7 +8,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Planet Mat
-  m_Shader: {fileID: 4800000, guid: 6830c3c5382349447ac5db3934cefde3, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 6830c3c5382349447ac5db3934cefde3,
+    type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -65,6 +66,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - Vector1_1EF12DC6: 0.63
+    - Vector1_7AD16554: 0
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -89,4 +91,4 @@ Material:
     - _Color: {r: 0.8392157, g: 0.06666664, b: 0.24482742, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
-    - _elevationMinMax: {r: -0.1032382, g: 0.08737175, b: 0, a: 0}
+    - _elevationMinMax: {r: -0.18906912, g: 0.13212186, b: 0, a: 0}

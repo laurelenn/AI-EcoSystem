@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6e6c8ca3ba8841e191076baacd2a9ab, type: 3}
   m_Name: Colour
   m_EditorClassIdentifier: 
-  planetMaterial: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+  planetMaterial: {fileID: 2100000, guid: d6570cc21b41742188eca71a4bb8d9e7, type: 2}
   biomeColourSettings:
     biomes:
     - gradient:
@@ -130,9 +130,9 @@ MonoBehaviour:
         centre: {x: 0, y: 0, z: 0}
         minValue: 0
         weightMultiplier: 0.8
-    noiseOffset: 1.08
-    noiseStrength: 0.15
-    blendAmount: 0.242
+    noiseOffset: 1.63
+    noiseStrength: 0.11
+    blendAmount: 0.179
   oceanColour:
     serializedVersion: 2
     key0: {r: 0.001290498, g: 0.095383465, b: 0.2735849, a: 1}
