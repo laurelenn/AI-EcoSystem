@@ -19,13 +19,12 @@ public class PlanetGenerator : MonoBehaviour
     {
     }
 
-    public void generatePlanet(string planetName, int planetSize, int planetDistance, int indexRadioButton){
+    public void generatePlanet(string planetName, int planetSize, int planetDistance, int waterPercentage, int indexRadioButton){
 
         //Setting name
         Debug.Log("Generate " + planetName);
         var gameObject = new GameObject(planetName);
 
-        //A remplacer par le code de Laurelenn
         //Cree une sphere par défaut
         var meshFilter = gameObject.AddComponent<MeshFilter>();
         gameObject.AddComponent<MeshRenderer>();
