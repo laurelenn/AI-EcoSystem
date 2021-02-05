@@ -25,7 +25,8 @@ public class ButtonHandler : MonoBehaviour
         if(planetName != ""){
             int planetSize = (int)GameObject.Find("sizeSlider").GetComponent<Slider>().value;
             int planetDistance = (int)GameObject.Find("DistanceSunSlider").GetComponent<Slider>().value;
-            GameObject.Find("Manager").GetComponent<PlanetGenerator>().generatePlanet(planetName, planetSize, planetDistance);
+            int indexRadioButton = 0;
+            GameObject.Find("Manager").GetComponent<PlanetGenerator>().generatePlanet(planetName, planetSize, planetDistance, indexRadioButton);
         }else{
             Debug.Log("Planet name is empty !");
         }
