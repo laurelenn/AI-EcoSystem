@@ -7,8 +7,6 @@ public class PlanetGenerator : MonoBehaviour
 {
      public Mesh objectToCreate;
      public GameObject sun;
-     public Material grass;
-     public Material lava;
     // Start is called before the first frame update
     void Start()
     {
@@ -45,7 +43,6 @@ public class PlanetGenerator : MonoBehaviour
         
         
         MeshRenderer mesh = gameObject.GetComponent<MeshRenderer>();
-        mesh.material = Resources.Load("planet", typeof(Material)) as Material;
 
     }
 }
