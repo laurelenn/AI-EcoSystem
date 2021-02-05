@@ -271,6 +271,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85492e6e5abb6364ab68b8b794f4fd97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Alias: 
+  Data:
+    Duration: 1
+    Target: {fileID: 0}
+    Volume: 1
 --- !u!114 &122111100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,6 +289,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c2fbc22786e7c54c8d600aa92b118d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Alias: 
+  Data:
+    Duration: 1
+    Target: {fileID: 0}
+    Position: 0
+    Ease: 100
 --- !u!114 &122111101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,6 +308,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73ac2062a3d7ad54abdcf2672edae623, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Alias: 
+  Data:
+    Duration: 1
+    Target: {fileID: 0}
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    Ease: 100
 --- !u!1 &122700995
 GameObject:
   m_ObjectHideFlags: 0
@@ -351,6 +368,60 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81fef0563e898f74f87bcb68d10688aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 0}
+  multiDown: 0
+  dragThreshold: 10
+  normalTransitions:
+    speed: -1
+    roots: []
+    aliases: []
+    targets: []
+    entries: []
+  downTransitions:
+    speed: -1
+    roots: []
+    aliases: []
+    targets: []
+    entries: []
+  clickTransitions:
+    speed: -1
+    roots: []
+    aliases: []
+    targets: []
+    entries: []
+  onDown:
+    m_PersistentCalls:
+      m_Calls: []
+  onClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &122700998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -417,6 +488,60 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81fef0563e898f74f87bcb68d10688aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 0}
+  multiDown: 0
+  dragThreshold: 10
+  normalTransitions:
+    speed: -1
+    roots: []
+    aliases: []
+    targets: []
+    entries: []
+  downTransitions:
+    speed: -1
+    roots: []
+    aliases: []
+    targets: []
+    entries: []
+  clickTransitions:
+    speed: -1
+    roots: []
+    aliases: []
+    targets: []
+    entries: []
+  onDown:
+    m_PersistentCalls:
+      m_Calls: []
+  onClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &167054697
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -429,6 +554,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c66d284d9a82ee4ca480f0ae8d2805b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  on: 0
+  turnOffSiblings: 0
+  onTransitions:
+    speed: -1
+    roots: []
+    aliases: []
+    targets: []
+    entries: []
+  offTransitions:
+    speed: -1
+    roots: []
+    aliases: []
+    targets: []
+    entries: []
+  onOn:
+    m_PersistentCalls:
+      m_Calls: []
+  onOff:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &178371903
 GameObject:
   m_ObjectHideFlags: 0
@@ -999,6 +1144,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85492e6e5abb6364ab68b8b794f4fd97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Alias: 
+  Data:
+    Duration: 1
+    Target: {fileID: 0}
+    Volume: 1
 --- !u!114 &372245774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1011,6 +1161,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73ac2062a3d7ad54abdcf2672edae623, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Alias: 
+  Data:
+    Duration: 1
+    Target: {fileID: 0}
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    Ease: 100
 --- !u!114 &372245775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1023,6 +1179,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73ac2062a3d7ad54abdcf2672edae623, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Alias: 
+  Data:
+    Duration: 1
+    Target: {fileID: 0}
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    Ease: 100
 --- !u!1 &444841105
 GameObject:
   m_ObjectHideFlags: 0
@@ -1499,6 +1661,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c66d284d9a82ee4ca480f0ae8d2805b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  on: 0
+  turnOffSiblings: 0
+  onTransitions:
+    speed: -1
+    roots: []
+    aliases: []
+    targets: []
+    entries: []
+  offTransitions:
+    speed: -1
+    roots: []
+    aliases: []
+    targets: []
+    entries: []
+  onOn:
+    m_PersistentCalls:
+      m_Calls: []
+  onOff:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &751566096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1511,6 +1693,60 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81fef0563e898f74f87bcb68d10688aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 0}
+  multiDown: 0
+  dragThreshold: 10
+  normalTransitions:
+    speed: -1
+    roots: []
+    aliases: []
+    targets: []
+    entries: []
+  downTransitions:
+    speed: -1
+    roots: []
+    aliases: []
+    targets: []
+    entries: []
+  clickTransitions:
+    speed: -1
+    roots: []
+    aliases: []
+    targets: []
+    entries: []
+  onDown:
+    m_PersistentCalls:
+      m_Calls: []
+  onClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &755844377
 GameObject:
   m_ObjectHideFlags: 0
@@ -1816,6 +2052,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c2fbc22786e7c54c8d600aa92b118d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Alias: 
+  Data:
+    Duration: 1
+    Target: {fileID: 0}
+    Position: 0
+    Ease: 100
 --- !u!114 &790669773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1829,6 +2071,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73ac2062a3d7ad54abdcf2672edae623, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Alias: 
+  Data:
+    Duration: 1
+    Target: {fileID: 0}
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    Ease: 100
 --- !u!1 &890139995
 GameObject:
   m_ObjectHideFlags: 0
@@ -2105,6 +2353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 217c8e972fc1ae74abf64e3200253b45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultTiming: -1
 --- !u!4 &915115843
 Transform:
   m_ObjectHideFlags: 0
@@ -3006,6 +3255,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85492e6e5abb6364ab68b8b794f4fd97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Alias: 
+  Data:
+    Duration: 1
+    Target: {fileID: 0}
+    Volume: 1
 --- !u!114 &1256615861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3018,6 +3272,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73ac2062a3d7ad54abdcf2672edae623, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Alias: 
+  Data:
+    Duration: 1
+    Target: {fileID: 0}
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    Ease: 100
 --- !u!114 &1256615862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3030,6 +3290,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73ac2062a3d7ad54abdcf2672edae623, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Alias: 
+  Data:
+    Duration: 1
+    Target: {fileID: 0}
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    Ease: 100
 --- !u!1 &1270159308
 GameObject:
   m_ObjectHideFlags: 0
@@ -3111,6 +3377,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85492e6e5abb6364ab68b8b794f4fd97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Alias: 
+  Data:
+    Duration: 1
+    Target: {fileID: 0}
+    Volume: 1
 --- !u!114 &1319954584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3123,6 +3394,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73ac2062a3d7ad54abdcf2672edae623, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Alias: 
+  Data:
+    Duration: 1
+    Target: {fileID: 0}
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    Ease: 100
 --- !u!114 &1319954585
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3135,6 +3412,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73ac2062a3d7ad54abdcf2672edae623, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Alias: 
+  Data:
+    Duration: 1
+    Target: {fileID: 0}
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    Ease: 100
 --- !u!1 &1347030488
 GameObject:
   m_ObjectHideFlags: 0
@@ -3917,6 +4200,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 831f3c2dd0e5a154aa757f28aa473dfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Alias: 
+  Data:
+    Duration: 1
+    Target: {fileID: 0}
+    Scale: {x: 1, y: 1}
+    Ease: 100
 --- !u!114 &1731431983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3929,6 +4218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e827904b3dee129429b801767788c28a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Delay: 0
 --- !u!114 &1731431984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3941,6 +4231,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 831f3c2dd0e5a154aa757f28aa473dfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Alias: 
+  Data:
+    Duration: 1
+    Target: {fileID: 0}
+    Scale: {x: 1, y: 1}
+    Ease: 100
 --- !u!114 &1731431985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3954,6 +4250,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85492e6e5abb6364ab68b8b794f4fd97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Alias: 
+  Data:
+    Duration: 1
+    Target: {fileID: 0}
+    Volume: 1
 --- !u!1 &1752508188
 GameObject:
   m_ObjectHideFlags: 0
@@ -4374,6 +4675,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85492e6e5abb6364ab68b8b794f4fd97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Alias: 
+  Data:
+    Duration: 1
+    Target: {fileID: 0}
+    Volume: 1
 --- !u!114 &2138873302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4386,6 +4692,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73ac2062a3d7ad54abdcf2672edae623, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Alias: 
+  Data:
+    Duration: 1
+    Target: {fileID: 0}
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    Ease: 100
 --- !u!114 &2138873303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4398,6 +4710,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73ac2062a3d7ad54abdcf2672edae623, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Alias: 
+  Data:
+    Duration: 1
+    Target: {fileID: 0}
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    Ease: 100
 --- !u!114 &2807166781986434711
 MonoBehaviour:
   m_ObjectHideFlags: 0
