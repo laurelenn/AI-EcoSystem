@@ -52,7 +52,6 @@ public class ButtonHandler : MonoBehaviour
             if(!found)
                 result ++;
         }
-        Debug.Log(result);
         return result;
     }
 }
