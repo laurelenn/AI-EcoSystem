@@ -7,8 +7,8 @@ public class Climat : MonoBehaviour {
     GameObject planet;
     int[] favoriteAttribute = new int[4];
     int planetBiom; // 0 = Grass | 1 = Lava | 2 = Ice
-    int planetSize; // Between [;] 
-    int planetDistance; // Between [;]
+    int planetSize; // Between [5;30] 
+    int planetDistance; // Between [20;80]
     int planetHumidity; // Between [0-100]
 
     // type de plante (2), hauteur (7), volume(9), espacement(6)
@@ -35,15 +35,23 @@ public class Climat : MonoBehaviour {
     }
 
     int FavoriteHeight(){
-        return 0;
+        return (int)((planetHumidity*2+planetDistance)/2);
     }
 
     int FavoriteVolume(){
-        return 0;
+        return (int)((planetBiom+1)*10+planetHumidity-3);
     }
 
     int FavoriteSpread(){
-        return 0;
+        return planetSize*2;
     }
 
+    public string AttributeToBit(){
+        string dna = "";
+        dna+= System.Convert.ToString(favoriteAttribute[0], 2);
+        dna+= System.Convert.ToString(favoriteAttribute[1], 2);
+        dna+= System.Convert.ToString(favoriteAttribute[2], 2);
+        dna+= System.Convert.ToString(favoriteAttribute[3], 2);
+        return dna;
+    }
 }
