@@ -37,5 +37,9 @@ public class PlanetGenerator : MonoBehaviour
         // Taille
         gameObject.transform.localScale = new Vector3(planetSize/100f,planetSize/100f, planetSize/100f);
 
+        // Climat
+        // gameObject.AddComponent<Climat>();
+        // gameObject.GetComponent<Climat>().Init(gameObject, planetSize, planetDistance, waterPercentage, indexRadioButton);
+
     }
 }
