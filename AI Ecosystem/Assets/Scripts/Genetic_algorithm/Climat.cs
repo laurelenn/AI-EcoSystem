@@ -35,7 +35,7 @@ public class Climat : MonoBehaviour {
     }
 
     int FavoriteHeight(){
-        return ;
+        return 0;
     }
 
     int FavoriteVolume(){
