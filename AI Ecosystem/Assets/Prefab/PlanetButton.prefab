@@ -447,7 +447,7 @@ MonoBehaviour:
   onClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 6981072514686193207}
         m_MethodName: switchDisplay
         m_Mode: 1
         m_Arguments:
