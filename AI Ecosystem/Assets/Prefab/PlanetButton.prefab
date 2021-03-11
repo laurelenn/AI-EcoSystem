@@ -339,8 +339,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4810082040718303610}
   - component: {fileID: 2540189296745472338}
-  - component: {fileID: 8190866563356844994}
-  - component: {fileID: 8291662266950389465}
+  - component: {fileID: 6661620715975933377}
+  - component: {fileID: 6981072514686193207}
   m_Layer: 5
   m_Name: PlanetButton
   m_TagString: Untagged
@@ -447,7 +447,7 @@ MonoBehaviour:
   onClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8291662266950389465}
+      - m_Target: {fileID: 0}
         m_MethodName: switchDisplay
         m_Mode: 1
         m_Arguments:
@@ -458,7 +458,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &8190866563356844994
+--- !u!114 &6661620715975933377
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -467,12 +467,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3331508034431726961}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5027766304c77e94cb1417174ad616a8, type: 3}
+  m_Script: {fileID: 11500000, guid: 7f5c9e52938f0f64fae7ebbc7c84270d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   idButton: 0
   cam: {fileID: 0}
---- !u!114 &8291662266950389465
+--- !u!114 &6981072514686193207
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -481,10 +481,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3331508034431726961}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e53daf9f5ca372942839b97cd359a02c, type: 3}
+  m_Script: {fileID: 11500000, guid: 3dc821e027ca90a40a2bf54bef3acd26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
+  cam2: {fileID: 0}
   idButton: 0
 --- !u!1 &7191674056009784171
 GameObject:
