@@ -13,7 +13,13 @@ public class ButtonHandler : MonoBehaviour
     public GameObject prefabButton;
     public Transform canvas;
     private int nbPlanets;
-    
+
+    //ground materials
+    [SerializeField] private Material ice;
+    [SerializeField] private Material lava;
+    [SerializeField] private Material grass;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -63,8 +69,10 @@ public class ButtonHandler : MonoBehaviour
                 {
                     buttonTxt.GetComponent<UnityEngine.UI.Text>().text = planetName;
                 }
-
                 newButton.GetComponent<SwitchButton>().idButton = nbPlanets;
+
+                //Change ground material according to planet type
+                changeGroundMaterial(indexRadioButton);
 
                 nbPlanets++;
             }
@@ -88,5 +96,35 @@ public class ButtonHandler : MonoBehaviour
                 result ++;
         }
         return result;
+    }
+
+    private void changeGroundMaterial(int type)
+    {
+        Material mat;
+        switch (type)
+        {
+            case 0:
+                mat = grass;
+                break;
+            case 1:
+                mat = lava;
+                break;
+            case 2:
+                mat = ice;
+                break;
+            default:
+                mat = grass;
+                break;
+        }
+        GameObject matchingTerrain;
+        GameObject[] terrains = GameObject.FindGameObjectsWithTag("Closeup");
+        foreach (GameObject go in terrains)
+        {
+            if (go.GetComponent<TerrainGround>().idTerrain == nbPlanets)
+            {
+                matchingTerrain = go;
+                go.transform.Find("Plane").GetComponent<Renderer>().material = mat;
+            }
+        }
     }
 }
