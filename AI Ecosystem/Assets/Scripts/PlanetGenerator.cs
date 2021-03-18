@@ -5,13 +5,15 @@ using UnityEngine.UI;
 
 public class PlanetGenerator : MonoBehaviour
 {
-     public Mesh objectToCreate;
-     public GameObject sun;
+    public GameObject sun;
+    public GameObject[] PrefabPlanet = new GameObject[3];
+    
     // Start is called before the first frame update
     void Start()
     {
-        
-        
+        foreach (GameObject planet in PrefabPlanet){
+            planet.GetComponent<Planet>().GeneratePlanet();
+        }
     }
 
     // Update is called once per frame
@@ -19,29 +21,25 @@ public class PlanetGenerator : MonoBehaviour
     {
     }
 
-    public void generatePlanet(string planetName, int planetSize, int planetDistance, int waterPercentage, int indexRadioButton){
+    public void generatePlanet(string planetName, int planetSize, int planetDistance, int waterPercentage, int indexBiom){
 
-        //Setting name
+        //Setting name + Instantiate biom
         Debug.Log("Generate " + planetName);
-        var gameObject = new GameObject(planetName);
 
-        //Cree une sphere par défaut
-        var meshFilter = gameObject.AddComponent<MeshFilter>();
-        gameObject.AddComponent<MeshRenderer>();
-        meshFilter.sharedMesh = objectToCreate;
+        // Générer l'objet
+        var gameObject = Instantiate(
+            PrefabPlanet[indexBiom], 
+            new Vector3(0,0,-(planetDistance+planetSize)), 
+            Quaternion.identity, 
+            sun.transform);
+        gameObject.SetActive(true);
 
-        //Child from sun 
-        gameObject.transform.parent = sun.transform;
-        
-        //Distance and scale
-        //gameObject.transform.position = new Vector3(0,0,-100);
-        gameObject.transform.position = new Vector3(0,0,-planetDistance);
-        //gameObject.transform.localScale = new Vector3(1,1,1);
+        // Taille
         gameObject.transform.localScale = new Vector3(planetSize/100f,planetSize/100f, planetSize/100f);
 
-        //set planet speed rotation around the sun
-        gameObject.AddComponent<PlanetController>();
-        gameObject.GetComponent<PlanetController>().speed = 30;
+        // Climat
+        // gameObject.AddComponent<Climat>();
+        // gameObject.GetComponent<Climat>().Init(gameObject, planetSize, planetDistance, waterPercentage, indexRadioButton);
 
     }
 }
