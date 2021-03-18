@@ -32,22 +32,19 @@ public class Plant {
         Debug.Log(space);
     }
 
-    public void PlantBuilder() {
+    public GameObject PlantBuilder() {
         //fait des choses avec des prefabs pour construire la plante, en attendant
         //il faudra les mettres tous dans une liste / map pour pouvoir supprimer la plante une fois morte
         //en attendant test avec des phrases :
         string message = "This plant is a " + System.Enum.GetName(typeof(PlantType), type) + " of size " + size.ToString() + ", volume " + volume.ToString() + " and needs " + space.ToString() + " space."; 
         Debug.Log(message);
-        // GameObject newPlant = Instantiate(new GameObject(), new Vector3(0, 0, 0), new Quaternion());
-        // newPlant.name = System.Enum.GetName(typeof(PlantType), type);
-        // GameObject temp = Instantiate(coniferBase);
-        // temp.transform.parent = newPlant.transform;
-        // for(int i = 0; i < size; ++i) {
-        //     temp = Instantiate(coniferCone, new Vector3(0, i*7, 0), new Quaternion()); 
-        //     temp.transform.parent = newPlant.transform;
-        // }
         
+        //switch qui utilise le type de la plante pour utiliser le bon builder
+        //rajouter component PlantInfo à la plante créée
         Debug.Log("Done");
+
+        GameObject newPlant = null; // temporaire
+        return newPlant;
     }
 
 }

@@ -5,6 +5,7 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class GeneticAlgorithmManager : MonoBehaviour {
     [Header("Genetic Algorithm")]
 	[SerializeField] string targetString = "00110010111110100110010";
@@ -21,7 +22,6 @@ public class GeneticAlgorithmManager : MonoBehaviour {
 	[SerializeField] Text numGenerationsText;
 	[SerializeField] Transform populationTextParent;
 	[SerializeField] Text textPrefab;
-	[SerializeField] PlantBuilder plantBuilder;
 	public List<GameObject> allPlants;
 
 	private GeneticAlgorithm<char> ga;
@@ -79,6 +79,15 @@ public class GeneticAlgorithmManager : MonoBehaviour {
 		return score;
 	}
 
+	private bool killClosePlant(int index) {
+		foreach (var plant in allPlants)
+		{
+			//to do
+		}
+		
+		return true;
+	}
+
 
 
 
@@ -131,7 +140,7 @@ public class GeneticAlgorithmManager : MonoBehaviour {
 			textList[i].text = sb.ToString();
 			Plant plant = new Plant(bestGenes);
 			plant.PlantBuilder();
-			allPlants.Add(plantBuilder.BuildPlant(plant));
+			allPlants.Add(plant.PlantBuilder());
 		}
 	}
 
