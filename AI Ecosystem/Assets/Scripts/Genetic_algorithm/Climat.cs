@@ -13,6 +13,9 @@ public class Climat : MonoBehaviour {
 
     // type de plante (2), hauteur (7), volume(9), espacement(6)
     //      [0,2]        , [0, 127]   , [0, 511] ,   [0, 63]
+    //0 sapin
+    //1 avocat
+    //2 cactus
 
     void Init(GameObject gameobject,  int size, int distance, int humidity, int indexBiom){
         planet = gameobject;
