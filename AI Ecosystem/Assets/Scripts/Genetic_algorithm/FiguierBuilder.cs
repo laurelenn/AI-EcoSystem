@@ -32,7 +32,6 @@ public class FiguierBuilder : MonoBehaviour {
 
             for (int j=0; j<heightFiguier; j++){
                 int scaleLeaf = 50*heightFiguier-50*j;
-                Debug.Log(scaleLeaf);
                 Vector3 positionLeaf;
                 if (j!=0){
                     positionLeaf = new Vector3(0, prec+heightFiguier+1-j, 0);
