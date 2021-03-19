@@ -7,8 +7,10 @@ using UnityEngine.UI;
 
 
 public class GeneticAlgorithmManager : MonoBehaviour {
+	private string targetString;
+
     [Header("Genetic Algorithm")]
-	[SerializeField] string targetString = "00110010111110100110010";
+	// [SerializeField] string targetString = "00110010111110100110010";
 	[SerializeField] string validCharacters = "01";
 	[SerializeField] int populationSize = 200;
 	[SerializeField] float mutationRate = 0.01f;
@@ -26,9 +28,11 @@ public class GeneticAlgorithmManager : MonoBehaviour {
 
 	private GeneticAlgorithm<char> ga;
 	private System.Random random;
+	private float cooldown = 0f;
 
 	void Start()
 	{
+		targetString = gameObject.GetComponent<Climat>().AttributeToBit();
 		targetText.text = targetString;
 
 		if (string.IsNullOrEmpty(targetString))
@@ -43,14 +47,22 @@ public class GeneticAlgorithmManager : MonoBehaviour {
 
 	void Update()
 	{
-		ga.NewGeneration();
+		cooldown -= Time.deltaTime;
+		if(cooldown <= 0) {
+			ga.NewGeneration();
 
-		UpdateText(ga.BestGenes, ga.BestFitness, ga.Generation, ga.Population.Count, (j) => ga.Population[j].Genes);
+			UpdateText(ga.BestGenes, ga.BestFitness, ga.Generation, ga.Population.Count, (j) => ga.Population[j].Genes);
+			allPlants.Clear();
+			CreatePlants();
+			KillClosePlant();
 
-		if (ga.BestFitness == 1)
-		{
-			this.enabled = false;
+			cooldown = 1;
 		}
+
+		// if (ga.BestFitness == 1)
+		// {
+		// 	this.enabled = false;
+		// }
 	}
 
 	private char GetRandomCharacter()
@@ -79,17 +91,50 @@ public class GeneticAlgorithmManager : MonoBehaviour {
 		return score;
 	}
 
-	private bool killClosePlant(int index) {
-		foreach (var plant in allPlants)
+
+	private void CreatePlants() {
+		//create plant gameobject for each DNA sequence
+		for (int i = 0; i < ga.Population.Count; i++)
 		{
-			//to do
+			Plant plant = new Plant(ga.Population[i].Genes);
+			allPlants.Add(plant.PlantBuilder());
+		}
+	}
+	private bool KillClosePlant() {
+		for(int i=0; i<allPlants.Count; ++i)
+		{
+			for(int j=0; j<allPlants.Count; ++j) {
+				if(i!=j) {
+					float distance = Vector3.Distance(allPlants[i].transform.position, allPlants[j].transform.position);
+					if(distance < allPlants[i].GetComponent<PlantInfo>().plant.space) {
+						KillWeakerPlant(i, j);
+					}
+
+				}
+			}
 		}
 		
 		return true;
 	}
 
+	private void KillWeakerPlant(int index1, int index2) {
+		float fitness1 = FitnessFunction(index1);
+		float fitness2 = FitnessFunction(index2);
 
+		if(fitness1 > fitness2) {
+			Destroy(allPlants[index2]);
+			ga.Population.RemoveAt(index2);
+		}
+		else {
+			Destroy(allPlants[index1]);
+			ga.Population.RemoveAt(index1);
+		}
+	}
 
+// TODO
+// regarder fonctionnement liste, faire en sorte que la population puisse s'aggrandir DONE ?
+// faire en sorte que certaines plantes meurent à chaque génération DONE ?
+// voir pour le placement des plantes sur la plane TODO
 
 
 
@@ -138,9 +183,9 @@ public class GeneticAlgorithmManager : MonoBehaviour {
 			}
 
 			textList[i].text = sb.ToString();
-			Plant plant = new Plant(bestGenes);
-			plant.PlantBuilder();
-			allPlants.Add(plant.PlantBuilder());
+			// Plant plant = new Plant(bestGenes);
+			// plant.PlantBuilder();
+			// allPlants.Add(plant.PlantBuilder());
 		}
 	}
 
