@@ -55,6 +55,15 @@ public class GeneticAlgorithm<T> {
             }
         }
 
+        // Add one more child each generation
+        DNA<T> parent1a = ChooseParent();
+        DNA<T> parent2a = ChooseParent();
+
+        DNA<T> childa = parent1a.Crossover(parent2a);
+
+        childa.Mutate(MutationRate);
+        newPopulation.Add(childa);
+
         List<DNA<T>> tmpList = Population;
         Population = newPopulation;
         newPopulation = tmpList;

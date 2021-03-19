@@ -5,9 +5,9 @@ using UnityEngine;
 public class Plant {
     public enum PlantType
     {
-       Conifer,
-       Leafy,
-       Cactus
+       Conifer, //sapin
+       Leafy, //avocat
+       Cactus //cactus
     }
 
     public PlantType type;
