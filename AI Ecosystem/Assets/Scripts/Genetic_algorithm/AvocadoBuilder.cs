@@ -6,14 +6,10 @@ public class AvocadoBuilder : MonoBehaviour {
 
     [SerializeField] GameObject leaves;
 
-    void Start(){
-        buildAvocado(new Vector3(-2050, 0, 110),100,300); // 10
-        buildAvocado(42,120); // 5 ranges // 6 volumes
-    }
-
-    void Update(){
-
-    }
+    // void Start(){ //TEST
+    //     buildAvocado(new Vector3(-2050, 0, 110),100,300);
+    //     buildAvocado(12,200);
+    // }
 
     public void buildAvocado(int height, int volume){ // Position = (0,0,0)
         // Height : 0_127
