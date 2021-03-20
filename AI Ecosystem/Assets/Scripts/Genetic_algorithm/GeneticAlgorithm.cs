@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System;
+using UnityEngine;
 
 // Kryzarel youtube tutorial
 public class GeneticAlgorithm<T> {
@@ -32,6 +33,8 @@ public class GeneticAlgorithm<T> {
     }
 
     public void NewGeneration() {
+        Debug.Log("-----Population count-----");
+        Debug.Log(Population.Count);
         if(Population.Count <= 0) {
             return;
         }

@@ -14,7 +14,7 @@ public class Climat : MonoBehaviour {
     // type de plante (2), hauteur (7), volume(9), espacement(6)
     //      [0,2]        , [0, 127]   , [0, 511] ,   [0, 63]
 
-    void Init(GameObject gameobject,  int size, int distance, int humidity, int indexBiom){
+    public void Init(GameObject gameobject,  int size, int distance, int humidity, int indexBiom){
         planet = gameobject;
         planetSize = size;
         planetDistance = distance;
@@ -23,7 +23,7 @@ public class Climat : MonoBehaviour {
     }
 
  // send planet attribute to climat function
-    void ChooseFavoritePlant(){
+    public void ChooseFavoritePlant(){
         favoriteAttribute[0] = FavoriteType();
         favoriteAttribute[1] = FavoriteHeight();
         favoriteAttribute[2] = FavoriteVolume();

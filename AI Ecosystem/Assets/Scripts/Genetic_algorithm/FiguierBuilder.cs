@@ -11,11 +11,11 @@ public class FiguierBuilder : MonoBehaviour {
     // buildFiguier(50,200);
     // }
 
-    public void buildFiguier(int height, int volume){
-        buildFiguier(new Vector3(0, 0, 0),height,volume);
+    public GameObject buildFiguier(int height, int volume){
+        return buildFiguier(new Vector3(0, 0, 0),height,volume);
     }
 
-    public void buildFiguier(Vector3 positionPlant, int height, int volume){ // Position = (0,0,0)
+    public GameObject buildFiguier(Vector3 positionPlant, int height, int volume){ // Position = (0,0,0)
         // Height : 0_127
         // Volume : 0_511
 
@@ -55,5 +55,6 @@ public class FiguierBuilder : MonoBehaviour {
             branch.transform.rotation = Quaternion.Euler(rotateX, rotateY, 0);
             branch.transform.localScale = new Vector3(scale,scale,1);
         }
+        return plant;
     }
 }

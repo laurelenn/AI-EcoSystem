@@ -14,9 +14,9 @@ public class Plant {
     public int size;
     public int volume;
     public int space;
-    //modèles 
-    // public GameObject coniferBase;
-    // public GameObject coniferCone;
+
+    private Random rand = new Random();
+
 
     public Plant(char[] adn) {
         //interprétation séquence adn en type, taille, volume et espacement
@@ -32,19 +32,42 @@ public class Plant {
         Debug.Log(space);
     }
 
-    public GameObject PlantBuilder() {
+    public GameObject PlantBuilder(FiguierBuilder figuierBuilder, AvocadoBuilder avocadoBuilder) {
         //fait des choses avec des prefabs pour construire la plante, en attendant
         //il faudra les mettres tous dans une liste / map pour pouvoir supprimer la plante une fois morte
         //en attendant test avec des phrases :
         string message = "This plant is a " + System.Enum.GetName(typeof(PlantType), type) + " of size " + size.ToString() + ", volume " + volume.ToString() + " and needs " + space.ToString() + " space."; 
         Debug.Log(message);
+
+        GameObject plant = null;
+        float x = Random.Range(0f, 700f);
+        float z = Random.Range(0f, 700f);
+        Vector3 position = new Vector3(x, 0, z);
         
         //switch qui utilise le type de la plante pour utiliser le bon builder
+        switch (type)
+        {
+            case PlantType.Conifer:
+                plant = figuierBuilder.buildFiguier(position, size, volume);
+                break;
+            case PlantType.Leafy:
+                plant = figuierBuilder.buildFiguier(position, size, volume);
+                break;
+
+            case PlantType.Cactus:
+                plant = avocadoBuilder.buildAvocado(position, size, volume);
+                break;
+            
+            default:
+                plant = figuierBuilder.buildFiguier(position, size, volume);
+                break;
+        }
         //rajouter component PlantInfo à la plante créée
+        plant.AddComponent<PlantInfo>();
+        plant.GetComponent<PlantInfo>().plant = this;
         Debug.Log("Done");
 
-        GameObject newPlant = null; // temporaire
-        return newPlant;
+        return plant;
     }
 
 }
