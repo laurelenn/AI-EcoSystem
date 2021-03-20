@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class AvocadoBuilder : MonoBehaviour {
 
-    [SerializeField] GameObject leaves;
+    [SerializeField] static GameObject leaves;
 
     // void Start(){ //TEST
     //     buildAvocado(new Vector3(-2050, 0, 110),100,300);
     //     buildAvocado(12,200);
     // }
 
-    public void buildAvocado(int height, int volume){ // Position = (0,0,0)
-        buildAvocado(new Vector3(0,0,0), height, volume);
+    public static GameObject buildAvocado(int height, int volume){ // Position = (0,0,0)
+        return buildAvocado(new Vector3(0,0,0), height, volume);
     }
 
-    public void buildAvocado(Vector3 positionPlant, int height, int volume){
+    public static GameObject buildAvocado(Vector3 positionPlant, int height, int volume){
         int heightAvocado =(int)((height+10)/10);
         int volumeAvocado = (int)((volume+100)/100); 
         int angle = (int)(360/volumeAvocado);
@@ -40,5 +40,6 @@ public class AvocadoBuilder : MonoBehaviour {
             int rotate = Random.Range(10, 170);
             range.transform.rotation = Quaternion.Euler(0, rotate, 0);
         }
+        return plant;
     }
 }

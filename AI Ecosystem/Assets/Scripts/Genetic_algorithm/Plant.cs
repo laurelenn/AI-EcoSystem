@@ -14,9 +14,9 @@ public class Plant {
     public int size;
     public int volume;
     public int space;
-    //modèles 
-    // public GameObject coniferBase;
-    // public GameObject coniferCone;
+
+    private Random rand = new Random();
+
 
     public Plant(char[] adn) {
         //interprétation séquence adn en type, taille, volume et espacement
@@ -38,13 +38,32 @@ public class Plant {
         //en attendant test avec des phrases :
         string message = "This plant is a " + System.Enum.GetName(typeof(PlantType), type) + " of size " + size.ToString() + ", volume " + volume.ToString() + " and needs " + space.ToString() + " space."; 
         Debug.Log(message);
+
+        GameObject plant = null;
+        float x = Random.Range(0f, 700f);
+        float z = Random.Range(0f, 700f);
+        Vector3 position = new Vector3(x, 0, z);
         
         //switch qui utilise le type de la plante pour utiliser le bon builder
+        switch (type)
+        {
+            case PlantType.Conifer:
+                
+                break;
+            case PlantType.Leafy:
+                plant = FiguierBuilder.buildFiguier(position, size, volume);
+                break;
+
+            case PlantType.Cactus:
+                plant = AvocadoBuilder.buildAvocado(position, size, volume);
+                break;
+        }
         //rajouter component PlantInfo à la plante créée
+        plant.AddComponent<PlantInfo>();
+        plant.GetComponent<PlantInfo>().plant = this;
         Debug.Log("Done");
 
-        GameObject newPlant = null; // temporaire
-        return newPlant;
+        return plant;
     }
 
 }
