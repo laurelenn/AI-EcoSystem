@@ -32,7 +32,7 @@ public class Plant {
         Debug.Log(space);
     }
 
-    public GameObject PlantBuilder() {
+    public GameObject PlantBuilder(FiguierBuilder figuierBuilder, AvocadoBuilder avocadoBuilder) {
         //fait des choses avec des prefabs pour construire la plante, en attendant
         //il faudra les mettres tous dans une liste / map pour pouvoir supprimer la plante une fois morte
         //en attendant test avec des phrases :
@@ -48,14 +48,18 @@ public class Plant {
         switch (type)
         {
             case PlantType.Conifer:
-                
+                plant = figuierBuilder.buildFiguier(position, size, volume);
                 break;
             case PlantType.Leafy:
-                plant = FiguierBuilder.buildFiguier(position, size, volume);
+                plant = figuierBuilder.buildFiguier(position, size, volume);
                 break;
 
             case PlantType.Cactus:
-                plant = AvocadoBuilder.buildAvocado(position, size, volume);
+                plant = avocadoBuilder.buildAvocado(position, size, volume);
+                break;
+            
+            default:
+                plant = figuierBuilder.buildFiguier(position, size, volume);
                 break;
         }
         //rajouter component PlantInfo à la plante créée

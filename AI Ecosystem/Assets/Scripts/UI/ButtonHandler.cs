@@ -73,6 +73,7 @@ public class ButtonHandler : MonoBehaviour
 
                 //Change ground material according to planet type
                 changeGroundMaterial(indexRadioButton);
+                setPlantManagment(indexRadioButton, planetSize, planetDistance, waterPercentage);
 
                 nbPlanets++;
             }
@@ -124,6 +125,25 @@ public class ButtonHandler : MonoBehaviour
             {
                 matchingTerrain = go;
                 go.transform.Find("Plane").GetComponent<Renderer>().material = mat;
+            }
+        }
+    }
+
+    private void setPlantManagment(int type, int planetSize, int planetDistance, int waterPercentage) { 
+        GameObject matchingTerrain;
+        GameObject[] terrains = GameObject.FindGameObjectsWithTag("Closeup");
+        foreach (GameObject go in terrains)
+        {
+            if (go.GetComponent<TerrainGround>().idTerrain == nbPlanets)
+            {
+                matchingTerrain = go;
+                GameObject plain = go.transform.Find("Plane").gameObject;
+                GeneticAlgorithmManager gaManager = plain.GetComponent<GeneticAlgorithmManager>();
+                Climat climat = plain.GetComponent<Climat>();
+                climat.Init(null, planetSize, planetDistance, waterPercentage, type);
+                climat.ChooseFavoritePlant();
+                gaManager.enabled = true;
+                gaManager.setTargetString(climat.AttributeToBit());
             }
         }
     }

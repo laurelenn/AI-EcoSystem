@@ -12,28 +12,36 @@ public class GeneticAlgorithmManager : MonoBehaviour {
     [Header("Genetic Algorithm")]
 	// [SerializeField] string targetString = "00110010111110100110010";
 	[SerializeField] string validCharacters = "01";
-	[SerializeField] int populationSize = 200;
+	[SerializeField] int populationSize = 10;
 	[SerializeField] float mutationRate = 0.01f;
 	[SerializeField] int elitism = 5;
 
-	[Header("Other")]
-	[SerializeField] int numCharsPerText = 15000;
-	[SerializeField] Text targetText;
-	[SerializeField] Text bestText;
-	[SerializeField] Text bestFitnessText;
-	[SerializeField] Text numGenerationsText;
-	[SerializeField] Transform populationTextParent;
-	[SerializeField] Text textPrefab;
+	FiguierBuilder figuierBuilder;
+	AvocadoBuilder avocadoBuilder;
+
+	// [Header("Other")]
+	// [SerializeField] int numCharsPerText = 15000;
+	// [SerializeField] Text targetText;
+	// [SerializeField] Text bestText;
+	// [SerializeField] Text bestFitnessText;
+	// [SerializeField] Text numGenerationsText;
+	// [SerializeField] Transform populationTextParent;
+	// [SerializeField] Text textPrefab;
 	public List<GameObject> allPlants;
 
 	private GeneticAlgorithm<char> ga;
 	private System.Random random;
 	private float cooldown = 0f;
 
+	private List<int> markedToKill = new List<int>();
+
 	void Start()
 	{
 		targetString = gameObject.GetComponent<Climat>().AttributeToBit();
-		targetText.text = targetString;
+		// targetText.text = targetString;
+		GameObject manager = GameObject.FindGameObjectWithTag("Manager");
+		figuierBuilder = manager.GetComponent<FiguierBuilder>();
+		avocadoBuilder = manager.GetComponent<AvocadoBuilder>();
 
 		if (string.IsNullOrEmpty(targetString))
 		{
@@ -51,10 +59,12 @@ public class GeneticAlgorithmManager : MonoBehaviour {
 		if(cooldown <= 0) {
 			ga.NewGeneration();
 
-			UpdateText(ga.BestGenes, ga.BestFitness, ga.Generation, ga.Population.Count, (j) => ga.Population[j].Genes);
+			// UpdateText(ga.BestGenes, ga.BestFitness, ga.Generation, ga.Population.Count, (j) => ga.Population[j].Genes);
 			allPlants.Clear();
+			markedToKill.Clear();
 			CreatePlants();
-			KillClosePlant();
+			MarkPlants();
+			KillMarkedPlants();
 
 			cooldown = 1;
 		}
@@ -97,19 +107,20 @@ public class GeneticAlgorithmManager : MonoBehaviour {
 		for (int i = 0; i < ga.Population.Count; i++)
 		{
 			Plant plant = new Plant(ga.Population[i].Genes);
-			allPlants.Add(plant.PlantBuilder());
+			allPlants.Add(plant.PlantBuilder(figuierBuilder, avocadoBuilder));
 		}
 	}
-	private bool KillClosePlant() {
+	private bool MarkPlants() {
 		for(int i=0; i<allPlants.Count; ++i)
 		{
 			for(int j=0; j<allPlants.Count; ++j) {
 				if(i!=j) {
-					float distance = Vector3.Distance(allPlants[i].transform.position, allPlants[j].transform.position);
-					if(distance < allPlants[i].GetComponent<PlantInfo>().plant.space) {
-						KillWeakerPlant(i, j);
+					if(!markedToKill.Contains(i)) { //evoid duplicates
+						float distance = Vector3.Distance(allPlants[i].transform.position, allPlants[j].transform.position);
+						if(distance < allPlants[i].GetComponent<PlantInfo>().plant.space) {
+							MarkWeakerPlant(i, j);
+						}
 					}
-
 				}
 			}
 		}
@@ -117,17 +128,25 @@ public class GeneticAlgorithmManager : MonoBehaviour {
 		return true;
 	}
 
-	private void KillWeakerPlant(int index1, int index2) {
+	private void MarkWeakerPlant(int index1, int index2) {
 		float fitness1 = FitnessFunction(index1);
 		float fitness2 = FitnessFunction(index2);
 
 		if(fitness1 > fitness2) {
-			Destroy(allPlants[index2]);
-			ga.Population.RemoveAt(index2);
+			markedToKill.Add(index2);
 		}
 		else {
-			Destroy(allPlants[index1]);
-			ga.Population.RemoveAt(index1);
+			markedToKill.Add(index1);
+		}
+	}
+
+	private void KillMarkedPlants() {
+		markedToKill.Sort();
+		for (int i = markedToKill.Count-1; i > 0; --i)
+		{
+			int index = markedToKill[i];
+			Destroy(allPlants[index]);
+			ga.Population.RemoveAt(index);
 		}
 	}
 
@@ -136,7 +155,9 @@ public class GeneticAlgorithmManager : MonoBehaviour {
 // faire en sorte que certaines plantes meurent à chaque génération DONE ?
 // voir pour le placement des plantes sur la plane TODO
 
-
+	public void setTargetString(string target) {
+		targetString = target;
+	}
 
 
 
@@ -149,54 +170,54 @@ public class GeneticAlgorithmManager : MonoBehaviour {
 	private int numCharsPerTextObj;
 	private List<Text> textList = new List<Text>();
 
-	void Awake()
-	{
-		numCharsPerTextObj = numCharsPerText / validCharacters.Length;
-		if (numCharsPerTextObj > populationSize) numCharsPerTextObj = populationSize;
+// 	void Awake()
+// 	{
+// 		numCharsPerTextObj = numCharsPerText / validCharacters.Length;
+// 		if (numCharsPerTextObj > populationSize) numCharsPerTextObj = populationSize;
 
-		int numTextObjects = Mathf.CeilToInt((float)populationSize / numCharsPerTextObj);
+// 		int numTextObjects = Mathf.CeilToInt((float)populationSize / numCharsPerTextObj);
 
-		for (int i = 0; i < numTextObjects; i++)
-		{
-			textList.Add(Instantiate(textPrefab, populationTextParent));
-		}
-	}
+// 		for (int i = 0; i < numTextObjects; i++)
+// 		{
+// 			textList.Add(Instantiate(textPrefab, populationTextParent));
+// 		}
+// 	}
 
-	private void UpdateText(char[] bestGenes, float bestFitness, int generation, int populationSize, Func<int, char[]> getGenes)
-	{
-		bestText.text = CharArrayToString(bestGenes);
-		bestFitnessText.text = bestFitness.ToString();
+// 	private void UpdateText(char[] bestGenes, float bestFitness, int generation, int populationSize, Func<int, char[]> getGenes)
+// 	{
+// 		bestText.text = CharArrayToString(bestGenes);
+// 		bestFitnessText.text = bestFitness.ToString();
 
-		numGenerationsText.text = generation.ToString();
+// 		numGenerationsText.text = generation.ToString();
 
-		for (int i = 0; i < textList.Count; i++)
-		{
-			var sb = new StringBuilder();
-			int endIndex = i == textList.Count - 1 ? populationSize : (i + 1) * numCharsPerTextObj;
-			for (int j = i * numCharsPerTextObj; j < endIndex; j++)
-			{
-				foreach (var c in getGenes(j))
-				{
-					sb.Append(c);
-				}
-				if (j < endIndex - 1) sb.AppendLine();
-			}
+// 		for (int i = 0; i < textList.Count; i++)
+// 		{
+// 			var sb = new StringBuilder();
+// 			int endIndex = i == textList.Count - 1 ? populationSize : (i + 1) * numCharsPerTextObj;
+// 			for (int j = i * numCharsPerTextObj; j < endIndex; j++)
+// 			{
+// 				foreach (var c in getGenes(j))
+// 				{
+// 					sb.Append(c);
+// 				}
+// 				if (j < endIndex - 1) sb.AppendLine();
+// 			}
 
-			textList[i].text = sb.ToString();
-			// Plant plant = new Plant(bestGenes);
-			// plant.PlantBuilder();
-			// allPlants.Add(plant.PlantBuilder());
-		}
-	}
+// 			textList[i].text = sb.ToString();
+// 			// Plant plant = new Plant(bestGenes);
+// 			// plant.PlantBuilder();
+// 			// allPlants.Add(plant.PlantBuilder());
+// 		}
+// 	}
 
-	private string CharArrayToString(char[] charArray)
-	{
-		var sb = new StringBuilder();
-		foreach (var c in charArray)
-		{
-			sb.Append(c);
-		}
+// 	private string CharArrayToString(char[] charArray)
+// 	{
+// 		var sb = new StringBuilder();
+// 		foreach (var c in charArray)
+// 		{
+// 			sb.Append(c);
+// 		}
 
-		return sb.ToString();
-	}
+// 		return sb.ToString();
+// 	}
 }

@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class FiguierBuilder : MonoBehaviour {
 
-    [SerializeField] static GameObject leaves;
+    [SerializeField] GameObject leaves;
 
     // void Start(){ //TEST
     // buildFiguier(new Vector3(-2050, 0, 110),100,300);
     // buildFiguier(50,200);
     // }
 
-    public static GameObject buildFiguier(int height, int volume){
+    public GameObject buildFiguier(int height, int volume){
         return buildFiguier(new Vector3(0, 0, 0),height,volume);
     }
 
-    public static GameObject buildFiguier(Vector3 positionPlant, int height, int volume){ // Position = (0,0,0)
+    public GameObject buildFiguier(Vector3 positionPlant, int height, int volume){ // Position = (0,0,0)
         // Height : 0_127
         // Volume : 0_511
 
