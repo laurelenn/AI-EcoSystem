@@ -33,8 +33,8 @@ public class GeneticAlgorithm<T> {
     }
 
     public void NewGeneration() {
-        Debug.Log("-----Population count-----");
-        Debug.Log(Population.Count);
+        // Debug.Log("-----Population count-----");
+        // Debug.Log(Population.Count);
         if(Population.Count <= 0) {
             return;
         }

@@ -11,18 +11,18 @@ public class AvocadoBuilder : MonoBehaviour {
     //     buildAvocado(12,200);
     // }
 
-    public GameObject buildAvocado(int height, int volume){ // Position = (0,0,0)
-        return buildAvocado(new Vector3(0,0,0), height, volume);
+    public GameObject buildAvocado(int height, int volume, GameObject terrainX){ // Position = (0,0,0)
+        return buildAvocado(new Vector3(0,0,0), height, volume, terrainX);
     }
 
-    public GameObject buildAvocado(Vector3 positionPlant, int height, int volume){
+    public GameObject buildAvocado(Vector3 positionPlant, int height, int volume, GameObject terrainX){
         int heightAvocado =(int)((height+10)/10);
         int volumeAvocado = (int)((volume+100)/100); 
         int angle = (int)(360/volumeAvocado);
 
         GameObject plant = new GameObject("Avocado_Plant");
-        plant.transform.position = positionPlant;
-        //plant.transform.parent = terrainX.transform; --> Passer gameobject en paramètre de la fonction si besoin.
+        // plant.transform.position = positionPlant;
+        plant.transform.parent = terrainX.transform; // --> Passer gameobject en paramètre de la fonction si besoin.
 
         for (int i=0; i<heightAvocado; i++){
             GameObject range = new GameObject("Range_"+i);
@@ -40,6 +40,7 @@ public class AvocadoBuilder : MonoBehaviour {
             int rotate = Random.Range(10, 170);
             range.transform.rotation = Quaternion.Euler(0, rotate, 0);
         }
+        plant.transform.localPosition = positionPlant;
         return plant;
     }
 }

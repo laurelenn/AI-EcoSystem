@@ -11,11 +11,11 @@ public class FiguierBuilder : MonoBehaviour {
     // buildFiguier(50,200);
     // }
 
-    public GameObject buildFiguier(int height, int volume){
-        return buildFiguier(new Vector3(0, 0, 0),height,volume);
+    public GameObject buildFiguier(int height, int volume, GameObject terrainX){
+        return buildFiguier(new Vector3(0, 0, 0),height,volume, terrainX);
     }
 
-    public GameObject buildFiguier(Vector3 positionPlant, int height, int volume){ // Position = (0,0,0)
+    public GameObject buildFiguier(Vector3 positionPlant, int height, int volume, GameObject terrainX){ // Position = (0,0,0)
         // Height : 0_127
         // Volume : 0_511
 
@@ -25,7 +25,7 @@ public class FiguierBuilder : MonoBehaviour {
         int prec = 0;
 
         GameObject plant = new GameObject("Figuier_Plant");
-        //plant.transform.parent = terrainX?.transform; --> Passer gameobject en paramètre de la fonction si besoin.
+        plant.transform.parent = terrainX.transform; // --> Passer gameobject en paramètre de la fonction si besoin.
         for (int i=0; i<volumeFiguier; i++){
             GameObject branch = new GameObject("Branch_"+i);
             branch.transform.parent=plant.transform;
@@ -55,6 +55,7 @@ public class FiguierBuilder : MonoBehaviour {
             branch.transform.rotation = Quaternion.Euler(rotateX, rotateY, 0);
             branch.transform.localScale = new Vector3(scale,scale,1);
         }
+        plant.transform.localPosition = positionPlant;
         return plant;
     }
 }
