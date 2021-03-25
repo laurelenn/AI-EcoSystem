@@ -40,8 +40,8 @@ public class GeneticAlgorithmManager : MonoBehaviour {
 		targetString = gameObject.GetComponent<Climat>().AttributeToBit();
 		// targetText.text = targetString;
 		GameObject manager = GameObject.FindGameObjectWithTag("Manager");
-		figuierBuilder = manager.GetComponent<FiguierBuilder>();
-		avocadoBuilder = manager.GetComponent<AvocadoBuilder>();
+		figuierBuilder = gameObject.GetComponent<FiguierBuilder>();
+		avocadoBuilder = gameObject.GetComponent<AvocadoBuilder>();
 
 		if (string.IsNullOrEmpty(targetString))
 		{
@@ -56,6 +56,8 @@ public class GeneticAlgorithmManager : MonoBehaviour {
 	void Update()
 	{
 		cooldown -= Time.deltaTime;
+		string gen = "Generation n° " + ga.Generation.ToString();
+		Debug.Log(gen);
 		if(cooldown <= 0) {
 			ga.NewGeneration();
 
@@ -107,7 +109,7 @@ public class GeneticAlgorithmManager : MonoBehaviour {
 		for (int i = 0; i < ga.Population.Count; i++)
 		{
 			Plant plant = new Plant(ga.Population[i].Genes);
-			allPlants.Add(plant.PlantBuilder(figuierBuilder, avocadoBuilder));
+			allPlants.Add(plant.PlantBuilder(figuierBuilder, avocadoBuilder, this.gameObject));
 		}
 	}
 	private bool MarkPlants() {
@@ -117,7 +119,7 @@ public class GeneticAlgorithmManager : MonoBehaviour {
 				if(i!=j) {
 					if(!markedToKill.Contains(i)) { //evoid duplicates
 						float distance = Vector3.Distance(allPlants[i].transform.position, allPlants[j].transform.position);
-						if(distance < allPlants[i].GetComponent<PlantInfo>().plant.space) {
+						if(distance < allPlants[i].GetComponent<PlantInfo>().plant.space*2) {
 							MarkWeakerPlant(i, j);
 						}
 					}
@@ -147,13 +149,9 @@ public class GeneticAlgorithmManager : MonoBehaviour {
 			int index = markedToKill[i];
 			Destroy(allPlants[index]);
 			ga.Population.RemoveAt(index);
+			Debug.Log("A plant died");
 		}
 	}
-
-// TODO
-// regarder fonctionnement liste, faire en sorte que la population puisse s'aggrandir DONE ?
-// faire en sorte que certaines plantes meurent à chaque génération DONE ?
-// voir pour le placement des plantes sur la plane TODO
 
 	public void setTargetString(string target) {
 		targetString = target;
