@@ -5,9 +5,9 @@ using UnityEngine;
 public class Plant {
     public enum PlantType
     {
-       Conifer, //sapin
-       Leafy, //avocat
-       Cactus //cactus
+       Leafy, //avocat, on grass
+       Cactus, //cactus, on lava
+       Conifer //sapin, on ice
     }
 
     public PlantType type;
@@ -23,6 +23,9 @@ public class Plant {
         string adnString = new string(adn);
         // Debug.Log(adnString);
         type = (PlantType)System.Convert.ToInt32(adnString.Substring(0,2), 2);
+        if((int)type>2) {
+            type = (PlantType)Random.Range(0, 3);
+        }
         // Debug.Log(type);
         size = System.Convert.ToInt32(adnString.Substring(2,7), 2);
         // Debug.Log(size);
@@ -32,7 +35,7 @@ public class Plant {
         // Debug.Log(space);
     }
 
-    public GameObject PlantBuilder(FiguierBuilder figuierBuilder, AvocadoBuilder avocadoBuilder, GameObject terrain) {
+    public GameObject PlantBuilder(FiguierBuilder figuierBuilder, AvocadoBuilder avocadoBuilder, PinesBuilder pinesBuilder, GameObject terrain) {
         //fait des choses avec des prefabs pour construire la plante, en attendant
         //il faudra les mettres tous dans une liste / map pour pouvoir supprimer la plante une fois morte
         //en attendant test avec des phrases :
@@ -48,7 +51,7 @@ public class Plant {
         switch (type)
         {
             case PlantType.Conifer:
-                plant = figuierBuilder.buildFiguier(position, size, volume, terrain);
+                plant = pinesBuilder.buildPine(position, size, volume, terrain);
                 break;
             case PlantType.Leafy:
                 plant = avocadoBuilder.buildAvocado(position, size, volume, terrain);
@@ -59,7 +62,7 @@ public class Plant {
                 break;
             
             default:
-                plant = figuierBuilder.buildFiguier(position, size, volume, terrain);
+                plant = avocadoBuilder.buildAvocado(position, size, volume, terrain);
                 break;
         }
         //rajouter component PlantInfo à la plante créée

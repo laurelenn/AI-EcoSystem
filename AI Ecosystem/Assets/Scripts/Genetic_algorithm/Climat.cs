@@ -31,6 +31,8 @@ public class Climat : MonoBehaviour {
     }
 
     int FavoriteType(){
+        Debug.Log("planete biom");
+        Debug.Log(planetBiom);
         return planetBiom;
     }
 
@@ -47,11 +49,24 @@ public class Climat : MonoBehaviour {
     }
 
     public string AttributeToBit(){
-        string dna = "";
-        dna+= System.Convert.ToString(favoriteAttribute[0], 2);
-        dna+= System.Convert.ToString(favoriteAttribute[1], 2);
-        dna+= System.Convert.ToString(favoriteAttribute[2], 2);
-        dna+= System.Convert.ToString(favoriteAttribute[3], 2);
+        string typeStg= System.Convert.ToString(favoriteAttribute[0], 2);
+        if(typeStg.Length < 2) {
+            typeStg = typeStg.PadLeft(2, '0');
+        }
+        string heightStg = System.Convert.ToString(favoriteAttribute[1], 2);
+        if(heightStg.Length < 7) {
+            heightStg = heightStg.PadLeft(7, '0');
+        }
+        string volStg = System.Convert.ToString(favoriteAttribute[2], 2);
+        if(volStg.Length < 9) {
+            volStg = volStg.PadLeft(9, '0');
+        }
+        string spaceStg = System.Convert.ToString(favoriteAttribute[3], 2);
+        if(spaceStg.Length < 6) {
+            spaceStg = spaceStg.PadLeft(6, '0');
+        }
+        string dna = typeStg + heightStg + volStg + spaceStg;
+        Debug.Log(dna);
         return dna;
     }
 }
