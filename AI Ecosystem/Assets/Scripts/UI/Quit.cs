@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TerrainViewButton : MonoBehaviour
+public class Quit : MonoBehaviour
 {
 
-    public void Quit(){
-        Application.Exit();
+    public void QuitApp(){
+        Application.Quit();
     }
 }
